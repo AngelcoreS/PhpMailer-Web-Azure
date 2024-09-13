@@ -1,318 +1,123 @@
+/* styles.css */
 
-* {
-  margin: 0;
-  padding: 100;
-  box-sizing: border-box;
-}
-
+/* General styles */
 body {
-  font-family: Helvetica;
-  color: #082D49
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f5f5f5;
 }
 
-a{
-  text-decoration: none;
-  color: #082D49
+.container {
+    width: 80%;
+    margin: 0 auto;
 }
 
-
-/* apply styles to <header> */
+/* Header styles */
 header {
-  padding: 20px 30px;
-  background-color: rgb(129, 154, 184);
-  display: flex; /* Use flexbox to align items */
-  justify-content: space-between; /* Space out the elements */
-  align-items: center; /* Center items vertically */
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
 }
 
 header h1 {
-  font-family: Gopher;
-  font-weight: bold;
-  font-size: 28px; /* Adjust font size for medium screens */
-  color: #082D49;
-  margin: 0;
-}
-header a {
-  text-decoration: none;
-  color: #082D49;
-  font-size: 18px; /* Adjust link font size for better readability */
-  margin-left: 15px; /* Add some space between the header title and links */
+    display: inline-block;
+    margin: 0;
 }
 
-.header-right {
-  display: flex; /* Use Flexbox for alignment */
-  align-items: center; /* Center items vertically */
-  justify-content: flex-end; /* Align items to the right */
-  gap: 120px; /* Add some space between the button and logo */
+nav ul {
+    list-style-type: none;
+    margin: -25px;
+    padding: 10;
+    float: right;
 }
 
-/* Button styles */
-.button {
-  background-color: #082D49;
-  font-family: Gopher;
-  color: white;
-  padding: 10px 20px; /* Adjust padding */
-  text-align: center;
-  text-decoration: none;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 50px;
-
+nav ul li {
+    display: inline;
+    margin-left: 20px;
 }
 
-/* Hover effect for button */
-.button:hover {
-  background-color: #647c8a;
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
 }
 
-/* LinkedIn icon styles */
-.linkedin {
-  margin: 0; /* Remove margins for closer alignment */
-  cursor: pointer;
-  display: inline-block; /* Allows flexibility in placement */
-  align-items: center; /* Center icon vertically */
-}
-.linkedin img {
-  width: 50px; /* Set a fixed width for the logo */
-  height: auto; /* Maintain aspect ratio */
-}
-.linkedin:hover{
-  filter:contrast(200%) brightness(40%);
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
-/* Hero Style Start */
-.intro {
-  background-image: url("https://ik.imagekit.io/zaouyyw8g/Img/lock.jpeg?updatedAt=1725491146816");  
-  height: autopx;
-  padding: 50px;
-  text-align: center;
-
-}
-
-.intro img{
-  border-radius: 50%;
-  float: left;
-  margin-top: 75px;
-  margin-right: 50px;
-  margin-bottom: 100px;
-  width: auto; /* Set width to auto to maintain the original image width */
-  height: auto; /* Set height to auto to maintain the original image height */
-  max-width: 25%; /* Set a maximum width for the images */
-  max-height: 250px
-
-}       
-
-.intro {
-  color: #ffffff;
-  text-align: left;
-
-}
-
-.intro p {
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bold;
-  font-size: 22px;
-  color: white;
-  background-color: rgba(25, 25, 112, 0.6);
-  padding: 10px; /* Adjust padding as needed */
-  display: inline; /* Ensures background only around text */
-  margin-top: 10px; /* Add some margin to create separation */
-  line-height: 1.7; /* Adjust line-height to create space between lines */
-  margin-left: 10px; /* Adjust margin-left to move it to the right */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-}
-/* Hero Style end */
-
-section {
-  padding: 60px;
-}     
-
-.section-title {
-  font-family: Gopher;
-  font-size: 38px;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  padding: -10px 100px 20px 100px;
-  display: inline-block;
-}
-
-.blog-posts {
-  text-align: center;
-}
-
-.blog-post {
-  width: 1200px;
-  margin: 0 auto 30px auto;
-  background: rgb(86, 108, 143);
-  overflow: auto;
-}
- .blog-post img {
-  height:270px;
-  width: 100%;
-}               
-.blog-post {
-  width: 80%;
-  margin: 0 auto 30px auto; /* Center the blog post */
-  overflow: auto;
-}
-
-.blog {
-  padding: 45px;
-  width: 100%; /* Adjust width to 100% */
-  color: white;
-  text-align: left; /* Center the text */
-}
-
-.image-container {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 120px; /* Adjust as needed */
-    margin-right: 120px; /* Adjust as needed */
-}
-
-.image-container img {
-  width: auto; /* Set width to auto to maintain the original image width */
-  height: auto; /* Set height to auto to maintain the original image height */
-  max-width: 58%; /* Set a maximum width for the images */
-  max-height: 500px; /* Set a maximum height for the images */
-  object-fit: contain; /* Maintain aspect ratio and fit within the container */
-  margin-right: 40px; /* Adjust as needed for space between images */
-}
-
-.content img {
-  max-width: 80%; /* Set the maximum width to 100% of the container */
-  height: auto;    /* Maintain the aspect ratio */
-  display: block;  /* Remove any default inline styles applied to images */
-  margin: 0 auto;  /* Center the image within its container if necessary */
-}
-.qua {
-  max-width: 80%; /* Set the maximum width to 100% of the container */
-  height: auto;    /* Maintain the aspect ratio */
-  display: block;  /* Remove any default inline styles applied to images */
-  margin: 0 auto;
-}
-
-.AI {
-  max-width: 70%; /* Set the maximum width to 100% of the container */
-  height: auto;    /* Maintain the aspect ratio */
-  display: block;  /* Remove any default inline styles applied to images */
-  margin: 0 auto;
-}
-
-.blog h3 {
-  font-weight: lighter;
-  font-size: 32px; /* Increase the font size */
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.blog h4 {
-  font-weight: lighter;
-  font-size: 23px; /* Increase the font size */
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.blog p {
-  font-weight: lighter;
-  font-size: 20px; /* Increase the font size */
-  line-height: 1.5; /* Adjust line height if needed */
-}
-.blog a {
-  color: white;
-  font-style: italic;
-}
-@media only screen and (max-width: 600px) {
-  header {
-    padding: 10px;
-  }
-
-  header h1 {
-    font-size: 18px;
-  }
-
-  .button {
-    padding: 8px 12px;
-    font-size: 14px;
-    margin: 10px auto;
-  }
-
-  .header-right {
-    flex-direction: row; /* Maintain row direction on smaller screens */
-    justify-content: center; /* Center elements on smaller screens */
-    gap: 5px; /* Reduce gap on smaller screens */
-  }
-
-  .button {
-    font-size: 16px; /* Adjust font size for medium screens */
-    padding: 8px 16px; /* Adjust padding for button */
-  }
-
-  .linkedin img {
-    width: 35px; /* Adjust logo size for smaller screens */
-    height: auto;
-  }
-
-
-.button:hover{
-  padding: 8px 12px;
-  font-size: 14px;
-  margin: 10px auto;
-}
-
-  .linkedin {
-    margin-left: 10px;
-  }
-
-  .intro {
-    height: autopx;
-    padding: 20px;
+/* Hero section styles */
+.hero {
+    background-color: #4CAF50;
+    color: #fff;
     text-align: center;
-  }
-
-  .intro img {
-    width: 100%;
- max-width: 100px;
-height: auto;
-    margin: 20px auto;
-  }
-
-  .intro p {
-    font-size: 14px;
-    margin: 10px auto;
-  }
-section {
-    padding: 15px;
-  }
-   
-  .section-title {
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .blog-post {
-    width: 100%;
-    margin: 0 auto 20px auto;
-  }
-
-  .blog-post img {
-    height: auto;
-    width: 100%;
-  }
-
-  .blog {
-    padding: 15px;
-  }
-   
-  .image-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 68%;
-    max-height: 300px;
-    margin-left: 20px; /* Adjust as needed */
-    margin-right: 20px; /* Adjust as needed */
+    padding: 50px 0;
 }
 
+.hero h2 {
+    margin: 0;
+    font-size: 2.5em;
+}
 
+.hero p {
+    font-size: 1.2em;
+}
+
+.hero .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.hero .btn:hover {
+    background-color: #555;
+}
+
+/* Blog posts section styles */
+.blog-posts {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.blog-posts h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.post {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.post h3 {
+    margin-top: 0;
+}
+
+.post .read-more {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.post .read-more:hover {
+    text-decoration: underline;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
 }
