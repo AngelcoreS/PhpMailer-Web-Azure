@@ -1,0 +1,46 @@
+server {
+    # Listen on port 8080 for IPv4 addresses
+    listen 8080;
+
+    # Listen on port 8080 for IPv6 addresses
+    listen [::]:8080;
+
+    # Define the root directory for the website files
+    root /home/site/wwwroot;
+
+    # Set the default file to serve when a directory is requested
+    index home.html;
+
+    # Set the domain names this server block will respond to
+    server_name example.com www.example.com;
+
+    # Disable the automatic inclusion of the port number in redirects
+    port_in_redirect off;
+
+    # Main location block to handle requests
+    location / {
+        # Redirect requests with .html in the URI to the same URI without .html
+        if ($request_uri ~ ^/(.*)\.html(\?|$)) {
+            return 302 /$1;
+        }
+
+        # Try serving the request as a file, then as a .html file, then as a directory, or return a 404 error if not found
+        try_files $uri $uri.html $uri/ $uri.php =404;
+    }
+
+    # Deny access to any files starting with a dot (e.g., .htaccess)
+    location ~ /\. {
+        deny all;  # Block access to hidden files
+        access_log off;  # Disable logging for these requests
+        log_not_found off;  # Don't log 404 errors for these files
+    }
+
+    # Handle PHP files
+    location ~ \.php$ {
+        # Include configuration for handling PHP scripts with FastCGI
+        include snippets/fastcgi-php.conf;
+
+        # Define the FastCGI server (in this case, localhost on port 9000)
+        fastcgi_pass 127.0.0.1:9000;
+    }
+}
