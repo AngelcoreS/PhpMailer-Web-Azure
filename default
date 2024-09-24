@@ -1,6 +1,17 @@
 server {
     # Listen on port 8080 for IPv4 addresses
     listen 8080;
+    # Listen on port 8080 for IPv6 addresses
+    listen [::]:80;
+    # Set the domain names this server block will respond to
+    server_name example.com;
+    # Redirect this domain name to www 
+    return 301 http://www.example.com$request_uri;
+}
+
+server {
+    # Listen on port 8080 for IPv4 addresses
+    listen 8080;
 
     # Listen on port 8080 for IPv6 addresses
     listen [::]:8080;
@@ -12,7 +23,7 @@ server {
     index home.html;
 
     # Set the domain names this server block will respond to
-    server_name example.com www.example.com;
+    server_name www.example.com;
 
     # Disable the automatic inclusion of the port number in redirects
     port_in_redirect off;
