@@ -6,25 +6,25 @@ In this tutorial, I’ll walk you through the steps I took to create a fully fun
 
 I also set up the structure on the website in a way that keeps the main PHP file outside the web server's wwwroot directory and hides the .php extension in the URL.
 
-/site
-├── /wwwroot
-│   ├── /assets
-│   │   ├── /css
-│   │   │   └── styles.css
-│   │   ├── /images
-│   │   │   └── logo.png
-│   │   └── /js
-│   │       └── script.js
-│   ├── about.html
-│   ├── contact.html
-│   ├── services.html
-│   └── index.html
-├── /includes
-	│   └── sendemail.php          # Sensitive form handling (not publicly accessible)
-	│   ├── PHPMailer.php         # PHPMailer library files
-	│
-	└── /config
- 	   └── config.php           # Database config, environment variables
+/site </br>
+├── /wwwroot </br>
+│   ├── /assets  </br>
+│   │   ├── /css </br>
+│   │   │   └── styles.css </br>
+│   │   ├── /images </br>
+│   │   │   └── logo.png </br>
+│   │   └── /js </br>
+│   │       └── script.js </br>
+│   ├── about.html </br>
+│   ├── contact.html </br>
+│   ├── services.html </br>
+│   └── index.html  </br>
+├── /includes  </br>
+	│   └── sendemail.php          # Sensitive form handling (not publicly accessible) </br>
+	│   ├── PHPMailer.php         # PHPMailer library files </br>
+	│ </br>
+	└── /cofig </br>
+ 	   └── config.php           # Database config, environment variables </br>
 
 
 This tutorial combines both the technical setup and problem-solving skills that helped me overcome various challenges, ensuring a smooth deployment process from code to live website.
