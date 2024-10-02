@@ -31,7 +31,7 @@ This tutorial combines both the technical setup and problem-solving skills that 
 
 While manual deployment may not always be practical due to the availability of frameworks that streamline the process, it was invaluable in strengthening my foundational understanding of how web apps are built and secured.
 
-Once you finish step 1, 2 and 3 of [<b>Web App Azure</b>](https://github.com/AngelcoreS/Web-App-Azure). We are going to deploy this reposirory instead of the other, following similar Instructions. 
+Once you finish step 1, 2 and 3 of [<b>Web App Azure</b>](https://github.com/AngelcoreS/Web-App-Azure). We are going to deploy this repository instead of the other, following similar Instructions. 
 
 <h2>Deploy Web Blog Sample From Github</h2>
 
