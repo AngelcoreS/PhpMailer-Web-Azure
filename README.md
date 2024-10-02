@@ -1,4 +1,4 @@
-<h1>Contact Form Email Automation with PHPMailer</h1>
+
 
 This is the second chapter of how to build a website. To see how to set up the website, you can check out [<b>Web App Azure</b>](https://github.com/AngelcoreS/Web-App-Azure).
 
@@ -30,3 +30,8 @@ I also set up the structure on the website in a way that keeps the main PHP file
 This tutorial combines both the technical setup and problem-solving skills that helped me overcome various challenges, ensuring a smooth deployment process from code to live website.
 
 While manual deployment may not always be practical due to the availability of frameworks that streamline the process, it was invaluable in strengthening my foundational understanding of how web apps are built and secured.
+
+Once you finish step 1, 2 and 3 of [<b>Web App Azure</b>](https://github.com/AngelcoreS/Web-App-Azure). We are going to deploy this reposirory instead of the other, following similar Instructions. 
+
+<h2>Deploy Web Blog Sample From Github</h2>
+
