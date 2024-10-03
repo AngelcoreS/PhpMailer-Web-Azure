@@ -35,3 +35,68 @@ Once you finish step 1, 2 and 3 of [<b>Web App Azure</b>](https://github.com/Ang
 
 <h2>Deploy Web Blog Sample From Github</h2>
 
+Once connected via SSH in the Azure portal, you’ll be inside the Azure App Service container. First, install Git by running the following command:
+
+`apt update && apt install git`
+
+![git](assets/Img/4git.png)
+
+I recommend removing the entire wwwroot directory and cloning this repository, renaming it to wwwroot inside the same site folder.
+
+![clone](assets/Img/5clone.png)
+
+![wwwroot](assets/Img/6changename.png)
+
+At this point, we need to create an includes folder at the same level as the site folder:
+
+`cd /home/site && mkdir includes`
+
+Next, move the following files: README.md, default, sendemail.php, sendemail.php.bk, and startup.sh to the includes folder.
+
+Now, we need to edit the startup.sh file. Use nano to cut the last command, save the changes, and execute that command directly in the terminal.
+
+![cut](assets/Img/7cut.png)
+
+This step is necessary because the file was cloned from GitHub and contains hidden carriage return characters (\r) at the end of each line, which causes errors when executed.
+
+![err](assets/Img/8edit.png)
+
+In the Azure portal, navigate to Configuration under Settings. In the Startup Command box, enter the absolute path of the startup.sh file to ensure that it runs every time the app starts. This will apply the necessary configuration changes automatically, even after Azure scales or makes adjustments to the environment.
+
+![start](assets/Img/9startup.png)
+
+Finally, open a browser and navigate to your App Service URL:
+
+![page](assets/Img/10contact.png)
+
+<h2>The NGINX configuration file</h2>
+
+You will notice that the URL ends with the .html extension. Omitting file extensions from your URLs improves security, usability, flexibility, and search engine performance, while also giving your website a cleaner and more professional appearance.
+
+To achieve this, we need to modify the Nginx configuration file located at /etc/nginx/sites-available/default.
+
+Since we already have this file inside the includes folder, execute the startup.sh script to automatically update the default configuration file:
+
+`sh /home/includes/startup.sh`
+
+![default](assets/Img/12default.png)
+
+In this update, I made some changes compared to the previous tutorial. Instead of using the rewrite directive, I opted for return,[<b>based on this Stack Overflow discussion</b>](https://stackoverflow.com/questions/38228393/nginx-remove-html-extension)  . Start with a 302 temporary redirect, and once everything works as expected, switch to a 301 redirect, which indicates a permanent change and will be cached.
+
+<h2>PHP file configuration</h2>
+
+Here we need to make sure that fastcgi_pass (commonly found in the configuration files of Nginx, typically when you're configuring Nginx to work with a backend FastCGI process, such as PHP-FPM) is listen in the same pool configuration file
+
+`ps aux | grep php-fpm`
+
+Here you will know where php-fpm is running (/usr/local/etc/php-fpm.conf)
+
+Finally will use the next command to easy find the result
+
+`grep -R "listen =" /usr/local/etc/php-fpm.d/www.conf`
+
+And that result is what you will place in fastcgi_pass
+
+![default](assets/Img/12default.png)
+
+
