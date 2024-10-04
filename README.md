@@ -17,7 +17,7 @@ I also set up the structure on the website in a way that keeps the main PHP file
 │   │       └── script.js </br>
 │   ├── about.html </br>
 │   ├── contact.html </br>
-│   ├── services.html </br>
+│   ├── contactme.php </br>
 │   └── index.html  </br>
 ├── /includes  </br>
 	│   └── sendemail.php          # Sensitive form handling (not publicly accessible) </br>
@@ -103,8 +103,83 @@ The result of this command is what you will set in the fastcgi_pass directive in
 
 Now, to test it out, try submitting a contact form. The PHP script should redirect you back to Contact.html because we haven't configured the Gmail SMTP server yet. Additionally, if you enter an invalid email (e.g., usuario@correo), it will redirect you to invalid_email.html, which is a separate page.
 
-![default](assets/Img/14.1contacthtml.png)
+![contact](assets/Img/14.1contacthtml.png)
 
 Next, I'll explain how this PHP script works in detail.
 
-<h2>PHP Script</h2>
+<h2>Installing Composer</h2>
+
+There’s no need to reinvent the wheel—we’re not writing a PHP program to interact directly with SMTP or creating an SMTP server. Instead, we’ll use Composer, a dependency manager for PHP, which allows us to easily install and manage libraries like PHPMailer.
+
+Composer simplifies the process of handling external libraries by resolving dependencies and downloading them. It ensures that the correct versions of libraries are used in your project, making the development process more streamlined.
+
+First, we need to install Composer. It’s recommended to install the files in the includes folder.
+
+Navigate to your includes folder:
+
+`cd /home/site/includes`
+
+Update your package manager:
+
+`apt update`
+
+Download Composer’s installer script:
+
+`curl -sS https://getcomposer.org/installer -o composer-setup.php`
+
+Install Composer globally:
+
+`php composer-setup.php --install-dir=/usr/local/bin --filename=composer`
+
+Verify Composer installation:
+
+`composer -v`
+
+This command will check if Composer was installed correctly by displaying the version number and available commands.
+
+![composer](assets/Img/1composer.png)
+
+<h2>Installing PHPMailer</h2>
+
+The next step is to install PHPMailer using Composer. While inside the same includes folder, run the following command:
+
+`composer require phpmailer/phpmailer`
+
+![php](assets/Img/2phpmailer.png)
+
+This command will automatically handle all dependencies and library management for PHPMailer.
+
+You can explore more details about PHPMailer on its GitHub repository by clicking [<b>PHPMailer</b>](https://github.com/PHPMailer/PHPMailer). There are many resources available, including a simple example that will serve as the foundation for the script I will explain next.
+
+![example](assets/Img/3examplephpmailer.png)
+
+<h2>Securing PHP Files</h2>
+
+By keeping your PHP files separate from public access (wwwroot), you minimize the risk of accidental exposure, which is critical for security. The only PHP file inside wwwroot is contactme.php.
+
+![contactme](assets/Img/14.2contactme.png)
+
+In this file, I use a conditional to check if it was executed by clicking the SubmitContact button using the isset function. If so, it will save the name, email, and message into variables, then require the sendemail.php file using require_once and call the send_contact_email function. Afterward, it will redirect to the thankyou.html file. If the form wasn't submitted, it will redirect to Contact.html, preventing direct access to the PHP file by typing its URL.
+
+Next is the main function, which I based on a simple example from their GitHub repository.
+
+I declared the function send_contact_email to retrieve the variables. By using filter_var, it checks the validity of the email. If the email is invalid, it will redirect to invalid_email.html and exit. If the email is valid, it will proceed with the data we need to change.
+
+![contactme](assets/Img/15.1sendemail.png)
+
+Username: This should be your Gmail address that you have access to.
+
+Password: You'll need to obtain an app-specific password from Google, which requires enabling 2-Step Verification on your Google account.
+
+Enable 2-Step Verification in your Google account settings.
+
+Generate an app-specific password, search for "app paswords".
+
+Create and use this password in your PHP script.
+
+Regarding setFrom, due to Google’s policies on email spoofing and preventing malicious activity, you cannot use a different email in the setFrom field that doesn't match your Gmail account. This restriction is part of Google’s anti-spam policies, which aim to prevent unauthorized use of Gmail for sending fraudulent or deceptive emails.
+
+The addAddress method specifies the recipient of the email. This can be the same Gmail account you’re using or any other email address you want to send the message to, allowing you to check incoming emails easily
+
+![passwd(assets/Img/16.1passwd.png)
+
