@@ -47,7 +47,7 @@ I recommend removing the entire wwwroot directory and cloning this repository, r
 
 ![wwwroot](assets/Img/6changename.png)
 
-At this point, we need to create an includes folder at the same level as the site folder:
+At this point, we need to create an includes folder at the same level as the wwwroot folder:
 
 `cd /home/site && mkdir includes`
 
@@ -85,18 +85,26 @@ In this update, I made some changes compared to the previous tutorial. Instead o
 
 <h2>PHP file configuration</h2>
 
-Here we need to make sure that fastcgi_pass (commonly found in the configuration files of Nginx, typically when you're configuring Nginx to work with a backend FastCGI process, such as PHP-FPM) is listen in the same pool configuration file
+Here, we need to ensure that the fastcgi_pass directive (commonly found in the Nginx configuration files when you're configuring Nginx to work with a backend FastCGI process like PHP-FPM) is set to listen in the same pool configuration file.
+
+To find where PHP-FPM is running, execute the following command:
 
 `ps aux | grep php-fpm`
 
-Here you will know where php-fpm is running (/usr/local/etc/php-fpm.conf)
+This will show you the location where php-fpm is running (/usr/local/etc/php-fpm.conf)
 
-Finally will use the next command to easy find the result
+Next, use the following command to easily find the listen directive in the PHP-FPM pool configuration:
 
 `grep -R "listen =" /usr/local/etc/php-fpm.d/www.conf`
 
-And that result is what you will place in fastcgi_pass
+The result of this command is what you will set in the fastcgi_pass directive in your Nginx configuration.
 
 ![default](assets/Img/12default.png)
 
+Now, to test it out, try submitting a contact form. The PHP script should redirect you back to Contact.html because we haven't configured the Gmail SMTP server yet. Additionally, if you enter an invalid email (e.g., usuario@correo), it will redirect you to invalid_email.html, which is a separate page.
 
+![default](assets/Img/14.1contacthtml.png)
+
+Next, I'll explain how this PHP script works in detail.
+
+<h2>PHP Script</h2>
