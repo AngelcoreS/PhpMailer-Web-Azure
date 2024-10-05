@@ -189,7 +189,7 @@ Create and use this password in your PHP script.
 
 8-9. If the email is successfully sent, it will redirect to thankyou.html. If the email fails to send, it will redirect to Contact.html.
 
-Now, to test it out, try submitting a contact form. If you enter an invalid email (e.g., usuario@correo), it will redirect you to invalid_email.html, which is a separate page.
+Now, to test it out, try submitting a contact form. If you enter an invalid email (e.g., usuario@correo), it will redirect you to invalid_email.html, which is a separate page. This page includes JavaScript to make it dynamic, featuring a countdown that updates every second. Once the countdown reaches 0, it will automatically redirect you back to Contact.html.
 
 ![invalid](assets/Img/13redirect.png)
 
