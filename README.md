@@ -101,7 +101,7 @@ The result of this command is what you will set in the fastcgi_pass directive in
 
 ![default](assets/Img/12default.png)
 
-And this is the Contact.html that will send the form to contactme.php
+And here is the Contact.html file, which will send the form data (name, email, message, submitContact) to contactme.php:
 
 ![contact](assets/Img/14.1contacthtml.png)
 
