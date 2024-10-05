@@ -43,6 +43,8 @@ Once connected via SSH in the Azure portal, you’ll be inside the Azure App Ser
 
 I recommend removing the entire wwwroot directory and cloning this repository, renaming it to wwwroot inside the same site folder.
 
+`mv Phpmailer-Web-Azure/ wwwroot/`
+
 ![clone](assets/Img/5clone.png)
 
 ![wwwroot](assets/Img/6changename.png)
