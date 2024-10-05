@@ -85,7 +85,7 @@ In this update, I made some changes compared to the previous tutorial. Instead o
 
 <h2>PHP file configuration</h2>
 
-Here, we need to ensure that the fastcgi_pass directive (commonly found in the Nginx configuration files when you're configuring Nginx to work with a backend FastCGI process like PHP-FPM) is set to listen in the same pool configuration file.
+Here, we need to ensure that the fastcgi_pass directive (commonly found in the Nginx configuration files when you're configuring Nginx to work with a backend FastCGI process like PHP-FPM) is properly set to listen in the same pool configuration file. In simple terms, it acts as a link between the Nginx web server and the PHP-FPM process, allowing Nginx to execute PHP scripts.
 
 To find where PHP-FPM is running, execute the following command:
 
