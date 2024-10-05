@@ -77,7 +77,7 @@ To achieve this, we need to modify the Nginx configuration file located at /etc/
 
 Since we already have this file inside the includes folder, execute the startup.sh script to automatically update the default configuration file:
 
-`sh /home/includes/startup.sh`
+`sh /home/site/includes/startup.sh`
 
 ![default](assets/Img/12default.png)
 
