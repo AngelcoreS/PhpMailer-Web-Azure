@@ -81,7 +81,7 @@ Since we already have this file inside the includes folder, execute the startup.
 
 ![default](assets/Img/12default.png)
 
-In this update, I made some changes compared to the previous tutorial. Instead of using the rewrite directive, I opted for return,[<b>based on this Stack Overflow discussion</b>](https://stackoverflow.com/questions/38228393/nginx-remove-html-extension)  . Start with a 302 temporary redirect, and once everything works as expected, switch to a 301 redirect, which indicates a permanent change and will be cached.
+In this update, I made some changes compared to the previous tutorial. Instead of using the rewrite directive, I opted for return, [<b>based on this Stack Overflow discussion</b>](https://stackoverflow.com/questions/38228393/nginx-remove-html-extension) . Start with a 302 temporary redirect, and once everything works as expected, switch to a 301 redirect, which indicates a permanent change and will be cached.
 
 <h2>PHP file configuration</h2>
 
@@ -101,11 +101,11 @@ The result of this command is what you will set in the fastcgi_pass directive in
 
 ![default](assets/Img/12default.png)
 
-Now, to test it out, try submitting a contact form. The PHP script should redirect you back to Contact.html because we haven't configured the Gmail SMTP server yet. Additionally, if you enter an invalid email (e.g., usuario@correo), it will redirect you to invalid_email.html, which is a separate page.
+And this is the Contact.html that will send the form to contactme.php
 
 ![contact](assets/Img/14.1contacthtml.png)
 
-Next, I'll explain how this PHP script works in detail.
+I'll explain how this PHP script works in detail later but first we need to install Composer and PHPMailer.
 
 <h2>Installing Composer</h2>
 
@@ -159,27 +159,42 @@ By keeping your PHP files separate from public access (wwwroot), you minimize th
 
 ![contactme](assets/Img/14.2contactme.png)
 
-In this file, I use a conditional to check if it was executed by clicking the SubmitContact button using the isset function. If so, it will save the name, email, and message into variables, then require the sendemail.php file using require_once and call the send_contact_email function. Afterward, it will redirect to the thankyou.html file. If the form wasn't submitted, it will redirect to Contact.html, preventing direct access to the PHP file by typing its URL.
+10-12. In this file, I use a conditional to check if it was executed by clicking the SubmitContact button using the isset function. If so, it will save the name, email, and message into variables, then require the sendemail.php file using require_once and call the send_contact_email function. Afterward, it will redirect to the thankyou.html file. If the form wasn't submitted, it will redirect to Contact.html, preventing direct access to the PHP file by typing its URL.
 
 Next is the main function, which I based on a simple example from their GitHub repository.
 
-I declared the function send_contact_email to retrieve the variables. By using filter_var, it checks the validity of the email. If the email is invalid, it will redirect to invalid_email.html and exit. If the email is valid, it will proceed with the data we need to change.
+1. I declared the function send_contact_email to retrieve the variables. By using filter_var, it checks the validity of the email. If the email is invalid, it will redirect to invalid_email.html and exit. If the email is valid, it will proceed with the data we need to change.
 
 ![contactme](assets/Img/15.1sendemail.png)
 
-Username: This should be your Gmail address that you have access to.
+3. Username: This should be your Gmail address that you have access to.
 
-Password: You'll need to obtain an app-specific password from Google, which requires enabling 2-Step Verification on your Google account.
+4. Password: You'll need to obtain an app-specific password from Google, which requires enabling 2-Step Verification on your Google account.
 
 Enable 2-Step Verification in your Google account settings.
 
 Generate an app-specific password, search for "app paswords".
 
+![passwd](assets/Img/16.1passwd.png)
+
 Create and use this password in your PHP script.
 
-Regarding setFrom, due to Google’s policies on email spoofing and preventing malicious activity, you cannot use a different email in the setFrom field that doesn't match your Gmail account. This restriction is part of Google’s anti-spam policies, which aim to prevent unauthorized use of Gmail for sending fraudulent or deceptive emails.
+5. Regarding setFrom, due to Google’s policies on email spoofing and preventing malicious activity, you cannot use a different email in the setFrom field that doesn't match your Gmail account. This restriction is part of Google’s anti-spam policies, which aim to prevent unauthorized use of Gmail for sending fraudulent or deceptive emails.
 
-The addAddress method specifies the recipient of the email. This can be the same Gmail account you’re using or any other email address you want to send the message to, allowing you to check incoming emails easily
+6. The addAddress method specifies the recipient of the email. This can be the same Gmail account you’re using or any other email address you want to send the message to, allowing you to check incoming emails easily
+ 
+![7-9](assets/Img/16.1passwd.png)
 
-![passwd(assets/Img/16.1passwd.png)
+7. Subject and Body of the email: These are customizable, so you can edit them as needed to fit your message.
 
+8-9. If the email is successfully sent, it will redirect to thankyou.html. If the email fails to send, it will redirect to Contact.html.
+
+Now, to test it out, try submitting a contact form. If you enter an invalid email (e.g., usuario@correo), it will redirect you to invalid_email.html, which is a separate page.
+
+![invalid](assets/Img/13redirect.png)
+
+Next, try typing your-URL/contactme.php directly into your browser. It should redirect to Contact.html again, preventing direct access to the PHP script.
+
+Finally, submit the form correctly, and you should receive something like this:
+
+![idone](assets/Img/17done.png)
