@@ -19,13 +19,10 @@ I also set up the structure on the website in a way that keeps the main PHP file
 │   ├── contact.html </br>
 │   ├── contactme.php </br>
 │   └── index.html  </br>
-├── /includes  </br>
-	│   └── sendemail.php          # Sensitive form handling (not publicly accessible) </br>
-	│   ├── PHPMailer.php         # PHPMailer library files </br>
-	│ </br>
-	└── /cofig </br>
- 	   └── config.php           # Database config, environment variables </br>
-
+└── /includes  </br>
+	    └── sendemail.php          # Sensitive form handling (not publicly accessible) </br>
+	    └── PHPMailer.php         # PHPMailer library files </br>
+	
 
 This tutorial combines both the technical setup and problem-solving skills that helped me overcome various challenges, ensuring a smooth deployment process from code to live website.
 
